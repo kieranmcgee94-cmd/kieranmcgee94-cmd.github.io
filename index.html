@@ -1,873 +1,706 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8"/>
-<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-<title>Kieran McGee — Portfolio & Travel</title>
-<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Lora:ital,wght@0,400;0,600;1,400&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet"/>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Kieran McGee</title>
+<link href="https://fonts.googleapis.com/css2?family=Fredoka+One&family=Space+Grotesk:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 <style>
-  :root {
-    --black: #0a0a0a;
-    --dark: #111111;
-    --card: #181818;
-    --amber: #f59e0b;
-    --amber-light: #fcd34d;
-    --white: #f5f5f0;
-    --muted: #888;
-    --border: #2a2a2a;
-  }
+* { margin:0; padding:0; box-sizing:border-box; }
+html, body { width:100%; height:100%; overflow:hidden; }
 
-  *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+body {
+  background: #f2f2f0;
+  color: #111;
+  font-family: 'Space Grotesk', sans-serif;
+}
 
-  html { scroll-behavior: smooth; }
+/* cursor removed */
 
-  body {
-    background: var(--black);
-    color: var(--white);
-    font-family: 'DM Sans', sans-serif;
-    font-weight: 300;
-    overflow-x: hidden;
-    cursor: none;
-  }
+/* ── NAV ── */
+nav {
+  position:fixed; top:0; left:0; right:0; z-index:5000;
+  padding:20px 44px;
+  display:flex; align-items:center; justify-content:space-between;
+  pointer-events:none;
+}
+nav > * { pointer-events:all; }
 
-  /* Custom cursor */
-  .cursor {
-    width: 12px; height: 12px;
-    background: var(--amber);
-    border-radius: 50%;
-    position: fixed; top: 0; left: 0;
-    pointer-events: none;
-    z-index: 9999;
-    transition: transform 0.15s ease;
-    transform: translate(-50%, -50%);
-  }
-  .cursor-ring {
-    width: 36px; height: 36px;
-    border: 1.5px solid var(--amber);
-    border-radius: 50%;
-    position: fixed; top: 0; left: 0;
-    pointer-events: none;
-    z-index: 9998;
-    transition: transform 0.35s ease, width 0.3s, height 0.3s, opacity 0.3s;
-    transform: translate(-50%, -50%);
-    opacity: 0.5;
-  }
+.nav-logo { display:none; }
 
-  /* NAV */
-  nav {
-    position: fixed; top: 0; left: 0; right: 0;
-    z-index: 100;
-    display: flex; align-items: center; justify-content: space-between;
-    padding: 1.4rem 3rem;
-    background: linear-gradient(to bottom, rgba(10,10,10,0.95), transparent);
-    backdrop-filter: blur(2px);
-  }
-  .nav-logo {
-    font-family: 'Bebas Neue', sans-serif;
-    font-size: 1.6rem;
-    letter-spacing: 0.1em;
-    color: var(--amber);
-    text-decoration: none;
-  }
-  .nav-links { display: flex; gap: 2.5rem; list-style: none; }
-  .nav-links a {
-    color: var(--white);
-    text-decoration: none;
-    font-size: 0.78rem;
-    letter-spacing: 0.12em;
-    text-transform: uppercase;
-    opacity: 0.7;
-    transition: opacity 0.2s, color 0.2s;
-  }
-  .nav-links a:hover { opacity: 1; color: var(--amber); }
+.nav-links { display:flex; gap:8px; }
+.nav-btn {
+  padding:8px 18px; border-radius:22px; border:none;
+  font-family:'Space Grotesk',sans-serif; font-weight:600;
+  font-size:.78rem; letter-spacing:.5px; text-transform:uppercase;
+  cursor:pointer; transition:all .22s;
+  background:rgba(255,255,255,0.15);
+  border:1px solid rgba(255,255,255,0.25);
+  color:#fff; backdrop-filter:blur(10px);
+}
+.nav-btn:hover { background:rgba(255,255,255,0.28); }
+.nav-btn.dark-btn {
+  background:rgba(0,0,0,0.06);
+  border-color:rgba(0,0,0,0.12);
+  color:#111;
+}
+.nav-btn.dark-btn:hover { background:rgba(0,0,0,0.1); }
 
-  /* HERO */
-  #hero {
-    min-height: 100vh;
-    display: flex; flex-direction: column; justify-content: flex-end;
-    padding: 0 3rem 5rem;
-    position: relative;
-    overflow: hidden;
-    background: var(--black);
-  }
-  .hero-bg {
-    position: absolute; inset: 0;
-    background:
-      radial-gradient(ellipse at 70% 40%, rgba(245,158,11,0.12) 0%, transparent 60%),
-      radial-gradient(ellipse at 20% 80%, rgba(245,158,11,0.06) 0%, transparent 50%);
-    z-index: 0;
-  }
-  .hero-grain {
-    position: absolute; inset: 0;
-    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.04'/%3E%3C/svg%3E");
-    opacity: 0.4; z-index: 0;
-  }
-  .hero-line {
-    position: absolute; top: 0; right: 8rem;
-    width: 1px; height: 100%;
-    background: linear-gradient(to bottom, transparent, var(--amber), transparent);
-    opacity: 0.2; z-index: 0;
-  }
-  .hero-content { position: relative; z-index: 1; max-width: 900px; }
-  .hero-tag {
-    display: inline-block;
-    font-size: 0.72rem; letter-spacing: 0.2em; text-transform: uppercase;
-    color: var(--amber); border: 1px solid var(--amber);
-    padding: 0.3rem 0.9rem; margin-bottom: 1.5rem;
-    opacity: 0;
-    animation: fadeUp 0.8s 0.2s forwards;
-  }
-  .hero-name {
-    font-family: 'Bebas Neue', sans-serif;
-    font-size: clamp(5rem, 14vw, 13rem);
-    line-height: 0.9;
-    letter-spacing: 0.02em;
-    opacity: 0;
-    animation: fadeUp 0.8s 0.4s forwards;
-  }
-  .hero-name span { color: var(--amber); }
-  .hero-sub {
-    font-family: 'Lora', serif;
-    font-style: italic;
-    font-size: clamp(1rem, 2vw, 1.4rem);
-    color: var(--muted);
-    margin-top: 1.2rem;
-    max-width: 500px;
-    line-height: 1.6;
-    opacity: 0;
-    animation: fadeUp 0.8s 0.6s forwards;
-  }
-  .hero-cta {
-    display: flex; gap: 1rem; margin-top: 2.5rem;
-    opacity: 0; animation: fadeUp 0.8s 0.8s forwards;
-  }
-  .btn {
-    padding: 0.85rem 2rem;
-    font-family: 'DM Sans', sans-serif;
-    font-size: 0.78rem; letter-spacing: 0.12em; text-transform: uppercase;
-    text-decoration: none; border: none; cursor: none;
-    transition: all 0.3s;
-  }
-  .btn-primary { background: var(--amber); color: var(--black); font-weight: 500; }
-  .btn-primary:hover { background: var(--amber-light); transform: translateY(-2px); }
-  .btn-outline { border: 1px solid rgba(255,255,255,0.3); color: var(--white); background: transparent; }
-  .btn-outline:hover { border-color: var(--amber); color: var(--amber); }
-  .hero-scroll {
-    position: absolute; bottom: 2.5rem; right: 3rem;
-    display: flex; flex-direction: column; align-items: center; gap: 0.5rem;
-    opacity: 0; animation: fadeUp 0.8s 1.2s forwards; z-index: 1;
-  }
-  .hero-scroll span {
-    font-size: 0.65rem; letter-spacing: 0.2em; text-transform: uppercase;
-    color: var(--muted); writing-mode: vertical-rl;
-  }
-  .scroll-line {
-    width: 1px; height: 60px;
-    background: linear-gradient(to bottom, var(--amber), transparent);
-    animation: scrollPulse 2s infinite;
-  }
+/* ── MAIN CONTAINER ── */
+#main {
+  position:fixed; inset:0;
+  overflow-y:scroll;
+  scroll-snap-type:y mandatory;
+  -webkit-overflow-scrolling:touch;
+}
+#main::-webkit-scrollbar { display:none; }
 
-  /* SECTIONS */
-  section { padding: 7rem 3rem; position: relative; }
-  .section-label {
-    font-size: 0.7rem; letter-spacing: 0.25em; text-transform: uppercase;
-    color: var(--amber); margin-bottom: 0.8rem;
-    display: flex; align-items: center; gap: 0.8rem;
-  }
-  .section-label::after {
-    content: ''; display: block; width: 40px; height: 1px; background: var(--amber);
-  }
-  .section-title {
-    font-family: 'Bebas Neue', sans-serif;
-    font-size: clamp(3rem, 6vw, 5.5rem);
-    line-height: 1; letter-spacing: 0.03em;
-    margin-bottom: 3rem;
-  }
+/* ── VIDEO SLIDES ── */
+.slide {
+  position:relative; width:100%; height:100vh;
+  scroll-snap-align:start;
+  overflow:hidden;
+  flex-shrink:0;
+}
 
-  /* ABOUT */
-  #about { background: var(--dark); }
-  .about-grid {
-    display: grid; grid-template-columns: 1fr 1fr; gap: 6rem; align-items: center;
-  }
-  .about-visual {
-    position: relative; height: 500px;
-  }
-  .about-img-placeholder {
-    width: 100%; height: 100%;
-    background: linear-gradient(135deg, #1a1a1a 0%, #222 50%, #1a1a1a 100%);
-    border: 1px solid var(--border);
-    display: flex; align-items: center; justify-content: center;
-    flex-direction: column; gap: 1rem;
-    font-family: 'Lora', serif; font-style: italic; color: var(--muted);
-    font-size: 0.9rem;
-  }
-  .about-img-placeholder .icon { font-size: 3rem; opacity: 0.3; }
-  .about-badge {
-    position: absolute; bottom: -1.5rem; right: -1.5rem;
-    width: 120px; height: 120px;
-    background: var(--amber);
-    border-radius: 50%;
-    display: flex; flex-direction: column; align-items: center; justify-content: center;
-    text-align: center;
-  }
-  .about-badge strong {
-    font-family: 'Bebas Neue', sans-serif; font-size: 2.2rem; color: var(--black); line-height: 1;
-  }
-  .about-badge span { font-size: 0.65rem; color: var(--black); letter-spacing: 0.05em; }
-  .about-text p {
-    font-family: 'Lora', serif; font-size: 1.05rem; line-height: 1.9;
-    color: rgba(245,245,240,0.8); margin-bottom: 1.5rem;
-  }
-  .about-facts {
-    display: flex; gap: 2.5rem; margin-top: 2.5rem;
-    padding-top: 2rem; border-top: 1px solid var(--border);
-  }
-  .fact { }
-  .fact strong {
-    font-family: 'Bebas Neue', sans-serif; font-size: 2rem; color: var(--amber); display: block;
-  }
-  .fact span { font-size: 0.75rem; letter-spacing: 0.1em; text-transform: uppercase; color: var(--muted); }
+/* Video fills slide */
+.slide-video {
+  position:absolute; inset:0;
+  width:100%; height:100%;
+  object-fit:cover; z-index:0;
+}
 
-  /* SKILLS */
-  #skills { background: var(--black); }
-  .skills-grid {
-    display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 1.5px;
-    border: 1.5px solid var(--border); margin-top: 1rem;
-  }
-  .skill-card {
-    background: var(--dark); padding: 2.5rem;
-    border: 1.5px solid var(--border);
-    transition: background 0.3s, border-color 0.3s;
-    position: relative; overflow: hidden;
-  }
-  .skill-card::before {
-    content: ''; position: absolute; inset: 0;
-    background: linear-gradient(135deg, rgba(245,158,11,0.05), transparent);
-    opacity: 0; transition: opacity 0.3s;
-  }
-  .skill-card:hover { border-color: var(--amber); background: #161616; }
-  .skill-card:hover::before { opacity: 1; }
-  .skill-icon { font-size: 2rem; margin-bottom: 1rem; }
-  .skill-title {
-    font-family: 'Bebas Neue', sans-serif; font-size: 1.4rem; letter-spacing: 0.05em;
-    color: var(--white); margin-bottom: 0.5rem;
-  }
-  .skill-desc { font-size: 0.85rem; color: var(--muted); line-height: 1.7; }
-  .skill-tags { display: flex; flex-wrap: wrap; gap: 0.4rem; margin-top: 1.2rem; }
-  .tag {
-    font-size: 0.65rem; letter-spacing: 0.1em; text-transform: uppercase;
-    padding: 0.25rem 0.6rem;
-    border: 1px solid var(--border); color: var(--muted);
-    transition: all 0.2s;
-  }
-  .skill-card:hover .tag { border-color: rgba(245,158,11,0.4); color: var(--amber-light); }
+/* Placeholder — light warm tone, not dark */
+.slide-placeholder {
+  position:absolute; inset:0; z-index:1;
+  background:linear-gradient(135deg, #e8e4de 0%, #d4cfc8 50%, #c8c3bb 100%);
+  display:flex; flex-direction:column;
+  align-items:center; justify-content:center;
+  gap:14px; cursor:pointer;
+  transition:background .25s;
+}
+.slide-placeholder:hover { background:linear-gradient(135deg, #dedad4 0%, #cac5be 50%, #bdb8b0 100%); }
+.slide-placeholder .ph-num {
+  font-family:'Fredoka One',cursive;
+  font-size:10rem; color:rgba(0,0,0,0.05);
+  position:absolute; bottom:10px; right:24px; line-height:1;
+}
+.slide-placeholder .ph-icon { font-size:2.8rem; opacity:.25; }
+.slide-placeholder .ph-text {
+  font-size:.68rem; letter-spacing:3px; text-transform:uppercase;
+  color:rgba(0,0,0,.25);
+}
 
-  /* CV TIMELINE */
-  #cv { background: var(--dark); }
-  .timeline { position: relative; padding-left: 2rem; }
-  .timeline::before {
-    content: ''; position: absolute; left: 0; top: 0; bottom: 0;
-    width: 1px; background: linear-gradient(to bottom, var(--amber), transparent);
-  }
-  .timeline-item {
-    position: relative; padding-bottom: 3.5rem; padding-left: 2.5rem;
-    opacity: 0; transform: translateX(-20px);
-    transition: all 0.6s ease;
-  }
-  .timeline-item.visible { opacity: 1; transform: translateX(0); }
-  .timeline-dot {
-    position: absolute; left: -2.45rem; top: 0.4rem;
-    width: 10px; height: 10px;
-    background: var(--amber); border-radius: 50%;
-    box-shadow: 0 0 0 4px rgba(245,158,11,0.2);
-  }
-  .timeline-period {
-    font-size: 0.7rem; letter-spacing: 0.15em; text-transform: uppercase;
-    color: var(--amber); margin-bottom: 0.5rem;
-  }
-  .timeline-role {
-    font-family: 'Bebas Neue', sans-serif; font-size: 1.6rem;
-    letter-spacing: 0.05em; margin-bottom: 0.3rem;
-  }
-  .timeline-company { font-family: 'Lora', serif; font-style: italic; color: var(--muted); font-size: 0.9rem; margin-bottom: 1rem; }
-  .timeline-points { list-style: none; }
-  .timeline-points li {
-    font-size: 0.88rem; line-height: 1.7; color: rgba(245,245,240,0.7);
-    padding: 0.3rem 0; display: flex; gap: 0.8rem; align-items: flex-start;
-  }
-  .timeline-points li::before { content: '→'; color: var(--amber); flex-shrink: 0; }
-  .cv-download {
-    display: inline-flex; align-items: center; gap: 0.6rem;
-    margin-top: 3rem; padding: 1rem 2rem;
-    border: 1px solid var(--amber); color: var(--amber);
-    text-decoration: none; font-size: 0.78rem; letter-spacing: 0.12em; text-transform: uppercase;
-    transition: all 0.3s;
-  }
-  .cv-download:hover { background: var(--amber); color: var(--black); }
+/* Gradient overlay — only on video slides */
+.slide-overlay {
+  position:absolute; inset:0; z-index:2;
+  background:linear-gradient(
+    to top,
+    rgba(0,0,0,0.65) 0%,
+    rgba(0,0,0,0.1) 45%,
+    transparent 100%
+  );
+}
 
-  /* GALLERY */
-  #gallery { background: var(--black); }
-  .gallery-intro {
-    font-family: 'Lora', serif; font-style: italic; font-size: 1.1rem;
-    color: var(--muted); max-width: 500px; margin-bottom: 3rem; line-height: 1.7;
-  }
-  .gallery-filter {
-    display: flex; gap: 1rem; margin-bottom: 2.5rem; flex-wrap: wrap;
-  }
-  .filter-btn {
-    padding: 0.4rem 1.2rem;
-    background: transparent; border: 1px solid var(--border);
-    color: var(--muted); font-family: 'DM Sans', sans-serif;
-    font-size: 0.75rem; letter-spacing: 0.1em; text-transform: uppercase;
-    cursor: none; transition: all 0.2s;
-  }
-  .filter-btn:hover, .filter-btn.active { border-color: var(--amber); color: var(--amber); }
-  .gallery-grid {
-    display: grid;
-    grid-template-columns: repeat(4, 1fr);
-    grid-auto-rows: 220px;
-    gap: 6px;
-  }
-  .gallery-item {
-    position: relative; overflow: hidden; cursor: none;
-    transition: transform 0.4s ease;
-  }
-  .gallery-item:nth-child(3n+1) { grid-column: span 2; grid-row: span 2; }
-  .gallery-item:hover { z-index: 2; }
-  .gallery-placeholder {
-    width: 100%; height: 100%;
-    display: flex; align-items: flex-end; justify-content: flex-start; padding: 1.2rem;
-    transition: transform 0.5s ease;
-    position: relative;
-  }
-  .gallery-item:hover .gallery-placeholder { transform: scale(1.04); }
-  .gallery-overlay {
-    position: absolute; inset: 0;
-    background: linear-gradient(to top, rgba(0,0,0,0.7) 0%, transparent 50%);
-    opacity: 0; transition: opacity 0.3s;
-  }
-  .gallery-item:hover .gallery-overlay { opacity: 1; }
-  .gallery-label {
-    position: absolute; bottom: 0; left: 0; right: 0;
-    padding: 1rem 1.2rem;
-    font-size: 0.75rem; letter-spacing: 0.1em; text-transform: uppercase;
-    color: var(--white); transform: translateY(10px); opacity: 0;
-    transition: all 0.3s; z-index: 1;
-  }
-  .gallery-item:hover .gallery-label { transform: translateY(0); opacity: 1; }
-  .gallery-upload-note {
-    margin-top: 2rem; padding: 1.5rem; border: 1px dashed var(--border);
-    color: var(--muted); font-size: 0.85rem; line-height: 1.7; text-align: center;
-  }
-  .gallery-upload-note strong { color: var(--amber); display: block; margin-bottom: 0.3rem; }
+/* Content inside slide */
+.slide-content {
+  position:absolute; inset:0; z-index:3;
+  display:flex; flex-direction:column;
+  justify-content:center;
+  padding:52px 64px 80px;
+}
 
-  /* BLOG */
-  #blog { background: var(--dark); }
-  .blog-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.5px; }
-  .blog-card {
-    background: var(--black); position: relative; overflow: hidden;
-    transition: background 0.3s;
-  }
-  .blog-card:hover { background: #131313; }
-  .blog-card-img {
-    height: 200px; width: 100%;
-    display: flex; align-items: center; justify-content: center;
-    font-size: 3rem; border-bottom: 1.5px solid var(--border);
-  }
-  .blog-card-body { padding: 1.8rem; }
-  .blog-tag {
-    font-size: 0.65rem; letter-spacing: 0.15em; text-transform: uppercase;
-    color: var(--amber); margin-bottom: 0.6rem; display: block;
-  }
-  .blog-title {
-    font-family: 'Lora', serif; font-size: 1.1rem; font-weight: 600;
-    line-height: 1.4; margin-bottom: 0.8rem; color: var(--white);
-  }
-  .blog-excerpt { font-size: 0.83rem; color: var(--muted); line-height: 1.7; }
-  .blog-meta {
-    display: flex; align-items: center; justify-content: space-between;
-    margin-top: 1.5rem; padding-top: 1.2rem; border-top: 1px solid var(--border);
-    font-size: 0.72rem; color: var(--muted); letter-spacing: 0.05em;
-  }
-  .blog-read { color: var(--amber); letter-spacing: 0.1em; text-transform: uppercase; }
+/* Hero slide — name is massive and left */
+#sc0 {
+  justify-content:center;
+  padding:80px 64px;
+}
+#sc0 .slide-title {
+  font-size:clamp(5rem,14vw,12rem);
+  line-height:.9;
+}
 
-  /* CONTACT */
-  #contact { background: var(--black); }
-  .contact-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 6rem; align-items: start; }
-  .contact-text p {
-    font-family: 'Lora', serif; font-size: 1.05rem; line-height: 1.9;
-    color: rgba(245,245,240,0.7); margin-bottom: 1.5rem;
-  }
-  .contact-links { display: flex; flex-direction: column; gap: 1rem; margin-top: 2rem; }
-  .contact-link {
-    display: flex; align-items: center; gap: 1rem;
-    padding: 1rem 1.2rem; border: 1px solid var(--border);
-    color: var(--white); text-decoration: none;
-    transition: all 0.3s; font-size: 0.88rem;
-  }
-  .contact-link:hover { border-color: var(--amber); color: var(--amber); padding-left: 1.8rem; }
-  .contact-link span { font-size: 1.2rem; }
-  .contact-form { display: flex; flex-direction: column; gap: 1.2rem; }
-  .form-group { display: flex; flex-direction: column; gap: 0.4rem; }
-  .form-label {
-    font-size: 0.7rem; letter-spacing: 0.15em; text-transform: uppercase; color: var(--muted);
-  }
-  .form-input, .form-textarea {
-    background: var(--dark); border: 1px solid var(--border);
-    padding: 0.9rem 1rem; color: var(--white);
-    font-family: 'DM Sans', sans-serif; font-size: 0.9rem;
-    outline: none; transition: border-color 0.2s; resize: none;
-  }
-  .form-input:focus, .form-textarea:focus { border-color: var(--amber); }
-  .form-input::placeholder, .form-textarea::placeholder { color: var(--muted); }
-  .form-submit {
-    background: var(--amber); color: var(--black);
-    border: none; padding: 1rem 2rem;
-    font-family: 'DM Sans', sans-serif; font-size: 0.8rem;
-    letter-spacing: 0.15em; text-transform: uppercase; font-weight: 500;
-    cursor: none; transition: all 0.3s; align-self: flex-start;
-    margin-top: 0.5rem;
-  }
-  .form-submit:hover { background: var(--amber-light); transform: translateY(-2px); }
+.slide-tag {
+  display:inline-flex; align-items:center; gap:7px;
+  background:rgba(255,255,255,0.14);
+  border:1px solid rgba(255,255,255,0.22);
+  backdrop-filter:blur(8px);
+  border-radius:28px; padding:6px 16px;
+  font-size:.68rem; font-weight:600; letter-spacing:2px; text-transform:uppercase;
+  color:rgba(255,255,255,.8); margin-bottom:18px;
+  width:fit-content;
+  opacity:0; transform:translateY(16px);
+  transition:opacity .7s .1s, transform .7s .1s;
+}
+.slide-tag .dot { width:6px; height:6px; border-radius:50%; background:#fff; display:inline-block; }
 
-  /* FOOTER */
-  footer {
-    background: var(--dark);
-    padding: 2.5rem 3rem;
-    display: flex; align-items: center; justify-content: space-between;
-    border-top: 1px solid var(--border);
-  }
-  .footer-logo {
-    font-family: 'Bebas Neue', sans-serif; font-size: 1.4rem;
-    letter-spacing: 0.1em; color: var(--amber);
-  }
-  .footer-copy { font-size: 0.78rem; color: var(--muted); letter-spacing: 0.05em; }
-  .footer-links { display: flex; gap: 1.5rem; }
-  .footer-links a {
-    font-size: 0.75rem; letter-spacing: 0.1em; text-transform: uppercase;
-    color: var(--muted); text-decoration: none; transition: color 0.2s;
-  }
-  .footer-links a:hover { color: var(--amber); }
+.slide-title {
+  font-family:'Fredoka One',cursive;
+  font-size:clamp(3.2rem,8vw,7rem);
+  line-height:.95; color:#fff;
+  text-shadow:0 4px 24px rgba(0,0,0,0.25);
+  margin-bottom:14px;
+  opacity:0; transform:translateY(24px);
+  transition:opacity .7s .2s, transform .7s .2s;
+}
 
-  /* ANIMATIONS */
-  @keyframes fadeUp {
-    from { opacity: 0; transform: translateY(30px); }
-    to { opacity: 1; transform: translateY(0); }
-  }
-  @keyframes scrollPulse {
-    0%, 100% { opacity: 0.3; transform: scaleY(1); }
-    50% { opacity: 1; transform: scaleY(1.1); }
-  }
+.slide-sub {
+  font-size:1rem; font-weight:300; color:rgba(255,255,255,.6);
+  max-width:380px; line-height:1.65;
+  opacity:0; transform:translateY(16px);
+  transition:opacity .7s .35s, transform .7s .35s;
+}
 
-  .reveal {
-    opacity: 0; transform: translateY(40px);
-    transition: opacity 0.7s ease, transform 0.7s ease;
-  }
-  .reveal.visible { opacity: 1; transform: translateY(0); }
+/* Active slide animates in */
+.slide.active .slide-tag,
+.slide.active .slide-title,
+.slide.active .slide-sub {
+  opacity:1; transform:translateY(0);
+}
 
-  /* Responsive */
-  @media (max-width: 900px) {
-    nav { padding: 1.2rem 1.5rem; }
-    .nav-links { display: none; }
-    section { padding: 5rem 1.5rem; }
-    #hero { padding: 0 1.5rem 4rem; }
-    .about-grid, .contact-grid { grid-template-columns: 1fr; gap: 3rem; }
-    .about-visual { height: 300px; }
-    .gallery-grid { grid-template-columns: repeat(2, 1fr); }
-    .gallery-item:nth-child(3n+1) { grid-column: span 1; grid-row: span 1; }
-    .blog-grid { grid-template-columns: 1fr; }
-    footer { flex-direction: column; gap: 1rem; text-align: center; }
-    .skills-grid { grid-template-columns: 1fr; }
-  }
+/* Light content (for non-video placeholder slides) */
+.slide-content.light .slide-title { color:#111; text-shadow:none; }
+.slide-content.light .slide-sub { color:rgba(0,0,0,.45); }
+.slide-content.light .slide-tag { background:rgba(0,0,0,.06); border-color:rgba(0,0,0,.1); color:rgba(0,0,0,.6); }
+.slide-content.light .slide-tag .dot { background:#111; }
+
+/* ── PROGRESS ── */
+#progress {
+  position:fixed; right:22px; top:50%; transform:translateY(-50%);
+  z-index:6000; display:flex; flex-direction:column; gap:9px;
+}
+.prog-dot {
+  width:6px; height:6px; border-radius:50%;
+  background:rgba(255,255,255,.3); transition:all .35s; cursor:pointer;
+}
+.prog-dot:hover { background:rgba(255,255,255,.6); }
+.prog-dot.on { background:#fff; transform:scale(1.5); }
+.prog-dot.dark-dot { background:rgba(0,0,0,.2); }
+.prog-dot.dark-dot.on { background:#111; }
+
+/* ── AUTO PROGRESS BAR ── */
+#auto-bar {
+  position:fixed; top:0; left:0; right:0; height:2px;
+  background:rgba(255,255,255,.15); z-index:6000;
+}
+#auto-fill {
+  height:100%;
+  background:rgba(255,255,255,.8);
+  width:0%; transition:width linear;
+}
+
+/* ── SCROLL HINT ── */
+#scroll-hint {
+  position:fixed; bottom:28px; left:50%;
+  transform:translateX(-50%);
+  z-index:6000; display:flex; flex-direction:column; align-items:center; gap:7px;
+  opacity:0; animation:fadeIn 1s 2s forwards;
+  pointer-events:none;
+}
+#scroll-hint span { font-size:.58rem; letter-spacing:3px; text-transform:uppercase; color:rgba(255,255,255,.4); }
+.scroll-wheel { width:22px; height:36px; border:1.5px solid rgba(255,255,255,.25); border-radius:11px; display:flex; align-items:flex-start; justify-content:center; padding:5px; }
+.scroll-wheel::after { content:''; width:3px; height:6px; background:rgba(255,255,255,.5); border-radius:2px; animation:sw 2s ease-in-out infinite; }
+@keyframes sw { 0%{transform:translateY(0);opacity:.6;}80%{transform:translateY(11px);opacity:0;}100%{transform:translateY(0);opacity:0;} }
+
+/* ── GALLERY PAGE ── */
+#gallery-page {
+  position:fixed; inset:0; z-index:7000;
+  background:#fff; color:#111;
+  overflow-y:auto;
+  transform:translateY(100%);
+  transition:transform .65s cubic-bezier(0.16,1,0.3,1);
+}
+#gallery-page.open { transform:translateY(0); }
+
+.gal-nav {
+  position:sticky; top:0; z-index:10;
+  padding:15px 24px;
+  background:rgba(255,255,255,.92);
+  backdrop-filter:blur(16px);
+  border-bottom:1px solid rgba(0,0,0,.06);
+  display:flex; align-items:center; justify-content:space-between;
+}
+.gal-logo { font-family:'Fredoka One',cursive; font-size:1.4rem; color:#111; letter-spacing:.5px; }
+.gal-right { display:flex; align-items:center; gap:12px; }
+.gal-count { font-size:.82rem; color:rgba(0,0,0,.38); }
+.btn-back {
+  padding:8px 18px; border-radius:22px; border:1.5px solid rgba(0,0,0,.1);
+  font-family:'Space Grotesk',sans-serif; font-weight:600; font-size:.78rem;
+  cursor:pointer; color:#111; background:none; transition:all .2s;
+}
+.btn-back:hover { background:#111; color:#fff; border-color:#111; }
+.btn-add {
+  padding:8px 18px; border-radius:22px; border:none;
+  font-family:'Space Grotesk',sans-serif; font-weight:700; font-size:.78rem;
+  cursor:pointer; color:#fff;
+  background:#111; transition:all .2s;
+}
+.btn-add:hover { background:#333; }
+
+.gal-header { padding:44px 24px 20px; }
+.gal-header h1 { font-family:'Fredoka One',cursive; font-size:clamp(2.5rem,6vw,4.5rem); color:#111; margin-bottom:8px; }
+.gal-header p { font-size:.92rem; color:rgba(0,0,0,.38); font-weight:300; }
+
+/* Instagram grid */
+.ig-grid {
+  display:grid;
+  grid-template-columns:repeat(3,1fr);
+  gap:2px; padding:2px;
+}
+@media(min-width:600px){.ig-grid{grid-template-columns:repeat(4,1fr);}}
+@media(min-width:900px){.ig-grid{grid-template-columns:repeat(5,1fr);}}
+@media(min-width:1200px){.ig-grid{grid-template-columns:repeat(6,1fr);}}
+
+.ig-cell {
+  aspect-ratio:1; overflow:hidden; position:relative;
+  background:#f0efed; cursor:pointer;
+}
+.ig-cell img { width:100%; height:100%; object-fit:cover; display:block; transition:transform .4s; }
+.ig-cell:hover img { transform:scale(1.05); }
+.ig-cell::after { content:''; position:absolute; inset:0; background:rgba(0,0,0,0); transition:background .3s; }
+.ig-cell:hover::after { background:rgba(0,0,0,.1); }
+.ig-ph { width:100%; height:100%; display:flex; align-items:center; justify-content:center; font-size:1.4rem; opacity:.18; }
+
+/* Lightbox */
+#lightbox {
+  position:fixed; inset:0; z-index:9000;
+  background:rgba(0,0,0,.95);
+  display:none; align-items:center; justify-content:center;
+}
+#lightbox.open { display:flex; }
+#lb-img { max-width:90vw; max-height:90vh; object-fit:contain; }
+.lb-btn { position:absolute; background:rgba(255,255,255,.1); border:none; color:#fff; width:44px; height:44px; border-radius:50%; font-size:1.1rem; cursor:pointer; transition:background .2s; backdrop-filter:blur(8px); }
+.lb-btn:hover { background:rgba(255,255,255,.2); }
+#lb-close { top:22px; right:22px; font-size:1.2rem; }
+#lb-prev { left:18px; top:50%; transform:translateY(-50%); }
+#lb-next { right:18px; top:50%; transform:translateY(-50%); }
+
+@keyframes fadeIn { from{opacity:0;} to{opacity:1;} }
+
+/* Toast */
+.toast { position:fixed; bottom:24px; left:50%; transform:translateX(-50%) translateY(80px); background:#111; color:#fff; padding:11px 24px; font-weight:700; font-size:.86rem; border-radius:26px; transition:transform .35s cubic-bezier(0.34,1.56,0.64,1); z-index:99999; letter-spacing:.3px; }
+.toast.show { transform:translateX(-50%) translateY(0); }
+
+input[type="file"] { display:none; }
 </style>
 </head>
 <body>
 
-<div class="cursor" id="cursor"></div>
-<div class="cursor-ring" id="cursorRing"></div>
+
 
 <!-- NAV -->
-<nav>
-  <a href="#hero" class="nav-logo">KM</a>
-  <ul class="nav-links">
-    <li><a href="#about">About</a></li>
-    <li><a href="#skills">Skills</a></li>
-    <li><a href="#cv">CV</a></li>
-    <li><a href="#gallery">Gallery</a></li>
-    <li><a href="#blog">Travel Blog</a></li>
-    <li><a href="#contact">Contact</a></li>
-  </ul>
+<nav id="nav">
+  <div class="nav-logo" id="navLogo">Kieran McGee</div>
+  <div class="nav-links">
+    <button class="nav-btn" id="navGallery" onclick="openGallery()">📸 Gallery</button>
+    <button class="nav-btn" id="navProjects">⚡ Projects</button>
+  </div>
 </nav>
 
-<!-- HERO -->
-<section id="hero">
-  <div class="hero-bg"></div>
-  <div class="hero-grain"></div>
-  <div class="hero-line"></div>
-  <div class="hero-content">
-    <div class="hero-tag">Portfolio & Travel — Australia</div>
-    <h1 class="hero-name">Kieran<br/><span>McGee</span></h1>
-    <p class="hero-sub">Remote professional. World traveller. Passionate about people, places, and getting things done.</p>
-    <div class="hero-cta">
-      <a href="#about" class="btn btn-primary">Discover More</a>
-      <a href="#contact" class="btn btn-outline">Get In Touch</a>
+<!-- AUTO PROGRESS BAR -->
+<div id="auto-bar"><div id="auto-fill"></div></div>
+
+<!-- PROGRESS DOTS -->
+<div id="progress"></div>
+
+<!-- SCROLL HINT -->
+<div id="scroll-hint"><span>scroll or wait</span><div class="scroll-wheel"></div></div>
+
+<!-- MAIN SCROLLER -->
+<div id="main">
+
+  <!-- SLIDE 1 — HERO VIDEO -->
+  <div class="slide active" data-i="0">
+    <video class="slide-video" id="vid0" autoplay muted loop playsinline style="display:none;"></video>
+    <div class="slide-placeholder" id="sph0" onclick="document.getElementById('fv0').click()">
+      <div class="ph-num">01</div>
+      <div class="ph-icon">🎬</div>
+      <div class="ph-text">tap to add your video</div>
+    </div>
+    <div class="slide-overlay"></div>
+    <div class="slide-content" id="sc0">
+      <div class="slide-tag"><span class="dot"></span> Traveller · Explorer · Builder</div>
+      <div class="slide-title">Kieran<br>McGee.</div>
     </div>
   </div>
-  <div class="hero-scroll">
-    <span>Scroll</span>
-    <div class="scroll-line"></div>
-  </div>
-</section>
 
-<!-- ABOUT -->
-<section id="about">
-  <div class="section-label">Who I Am</div>
-  <div class="about-grid">
-    <div class="about-visual reveal">
-      <div class="about-img-placeholder">
-        <div class="icon">📸</div>
-        <p>Add your photo here</p>
-      </div>
-      <div class="about-badge">
-        <strong>6+</strong>
-        <span>Years Exp.</span>
-      </div>
+  <!-- SLIDE 2 -->
+  <div class="slide" data-i="1">
+    <video class="slide-video" id="vid1" muted loop playsinline style="display:none;"></video>
+    <div class="slide-placeholder" id="sph1" onclick="document.getElementById('fv1').click()">
+      <div class="ph-num">02</div>
+      <div class="ph-icon">🌍</div>
+      <div class="ph-text">tap to add your video</div>
     </div>
-    <div class="about-text reveal">
-      <h2 class="section-title">About<br/>Me</h2>
-      <p>Hey, I'm Kieran — a results-driven remote professional originally from Nottingham, UK, currently based in Australia on a Working Holiday Visa. I've spent over six years honing my skills in management, operations, and team leadership, and I'm now channelling that experience into remote bookkeeping and administrative roles.</p>
-      <p>When I'm not working, I'm exploring the world — from the rolling countryside of England to the vast open landscapes of Australia. Travel is my passion, and this site is where I share that journey alongside my professional story.</p>
-      <p>Currently learning German 🇩🇪 and Japanese 🇯🇵 — always up for a challenge.</p>
-      <div class="about-facts">
-        <div class="fact"><strong>6+</strong><span>Years in Management</span></div>
-        <div class="fact"><strong>2+</strong><span>Languages Learning</span></div>
-        <div class="fact"><strong>∞</strong><span>Miles to Explore</span></div>
-      </div>
+    <div class="slide-overlay"></div>
+    <div class="slide-content">
+      <div class="slide-tag"><span class="dot"></span> Adventures</div>
+      <div class="slide-title">The World<br>Awaits.</div>
+      <p class="slide-sub">Every road leads somewhere worth going</p>
     </div>
   </div>
-</section>
 
-<!-- SKILLS -->
-<section id="skills">
-  <div class="section-label">What I Bring</div>
-  <h2 class="section-title reveal">Skills &<br/>Expertise</h2>
-  <div class="skills-grid">
-    <div class="skill-card reveal">
-      <div class="skill-icon">💻</div>
-      <div class="skill-title">Remote Work & IT</div>
-      <div class="skill-desc">Proficient in cloud-based tools and digital platforms built for modern remote work environments.</div>
-      <div class="skill-tags">
-        <span class="tag">MS Office</span>
-        <span class="tag">Google Workspace</span>
-        <span class="tag">Scheduling Tools</span>
-        <span class="tag">Cloud Admin</span>
-      </div>
+  <!-- SLIDE 3 -->
+  <div class="slide" data-i="2">
+    <video class="slide-video" id="vid2" muted loop playsinline style="display:none;"></video>
+    <div class="slide-placeholder" id="sph2" onclick="document.getElementById('fv2').click()">
+      <div class="ph-num">03</div>
+      <div class="ph-icon">✨</div>
+      <div class="ph-text">tap to add your video</div>
     </div>
-    <div class="skill-card reveal">
-      <div class="skill-icon">💰</div>
-      <div class="skill-title">Financial Accuracy</div>
-      <div class="skill-desc">Years of cash handling, till balancing, and financial reporting with a consistently high level of accuracy.</div>
-      <div class="skill-tags">
-        <span class="tag">Cash Handling</span>
-        <span class="tag">Record Keeping</span>
-        <span class="tag">Bookkeeping</span>
-      </div>
-    </div>
-    <div class="skill-card reveal">
-      <div class="skill-icon">📦</div>
-      <div class="skill-title">Operations & Admin</div>
-      <div class="skill-desc">Experienced in coordinating daily operations, inventory control, and administrative workflows.</div>
-      <div class="skill-tags">
-        <span class="tag">Inventory Control</span>
-        <span class="tag">Stock Management</span>
-        <span class="tag">Process Improvement</span>
-      </div>
-    </div>
-    <div class="skill-card reveal">
-      <div class="skill-icon">👥</div>
-      <div class="skill-title">Leadership & Training</div>
-      <div class="skill-desc">Trained, mentored and led teams across multiple sites, consistently hitting performance targets.</div>
-      <div class="skill-tags">
-        <span class="tag">Team Leadership</span>
-        <span class="tag">Staff Training</span>
-        <span class="tag">Multi-site Management</span>
-      </div>
-    </div>
-    <div class="skill-card reveal">
-      <div class="skill-icon">🌍</div>
-      <div class="skill-title">Communication</div>
-      <div class="skill-desc">Clear, confident communicator — in person, by email, and across distributed remote teams.</div>
-      <div class="skill-tags">
-        <span class="tag">Customer Service</span>
-        <span class="tag">Email Communication</span>
-        <span class="tag">Remote Collaboration</span>
-      </div>
-    </div>
-    <div class="skill-card reveal">
-      <div class="skill-icon">🗣️</div>
-      <div class="skill-title">Languages</div>
-      <div class="skill-desc">Native English speaker, actively learning German and Japanese to broaden international opportunities.</div>
-      <div class="skill-tags">
-        <span class="tag">English (Native)</span>
-        <span class="tag">German (Beginner)</span>
-        <span class="tag">Japanese (Beginner)</span>
-      </div>
+    <div class="slide-overlay"></div>
+    <div class="slide-content">
+      <div class="slide-tag"><span class="dot"></span> Moments</div>
+      <div class="slide-title">No Plans,<br>Just Go.</div>
+      <p class="slide-sub">The best stories are unplanned</p>
     </div>
   </div>
-</section>
 
-<!-- CV -->
-<section id="cv">
-  <div class="section-label">My Journey</div>
-  <h2 class="section-title reveal">Experience<br/>& Education</h2>
-  <div class="timeline">
-
-    <div class="timeline-item">
-      <div class="timeline-dot"></div>
-      <div class="timeline-period">2019 — 2025</div>
-      <div class="timeline-role">Assistant Manager</div>
-      <div class="timeline-company">Savers Health & Beauty — Nottingham, UK</div>
-      <ul class="timeline-points">
-        <li>Managed daily operations including cash handling, scheduling, and inventory control</li>
-        <li>Trained and mentored staff, consistently improving performance and customer satisfaction</li>
-        <li>Implemented process improvements reducing stock discrepancies and boosting efficiency</li>
-        <li>Exceeded sales and audit targets through strategic planning and hands-on leadership</li>
-        <li>Provided multi-site cover, leading temporary teams across regional locations</li>
-      </ul>
+  <!-- SLIDE 4 -->
+  <div class="slide" data-i="3">
+    <video class="slide-video" id="vid3" muted loop playsinline style="display:none;"></video>
+    <div class="slide-placeholder" id="sph3" onclick="document.getElementById('fv3').click()">
+      <div class="ph-num">04</div>
+      <div class="ph-icon">🚀</div>
+      <div class="ph-text">tap to add your video</div>
     </div>
-
-    <div class="timeline-item">
-      <div class="timeline-dot"></div>
-      <div class="timeline-period">2012 — 2018</div>
-      <div class="timeline-role">Supervisor / Team Leader</div>
-      <div class="timeline-company">Poundworld — Nottingham, UK</div>
-      <ul class="timeline-points">
-        <li>Supervised store sections, managed shift rotas, and maintained merchandising standards</li>
-        <li>Handled cash handling, till balancing, and opening/closing procedures</li>
-        <li>Supported management with staff coordination, budgeting, and stock ordering</li>
-      </ul>
-    </div>
-
-    <div class="timeline-item">
-      <div class="timeline-dot"></div>
-      <div class="timeline-period">Education</div>
-      <div class="timeline-role">Qualifications</div>
-      <div class="timeline-company">West Nottinghamshire College & Brunt's School, Mansfield</div>
-      <ul class="timeline-points">
-        <li>HND / Bachelor's Degree (Honours) in Music</li>
-        <li>Diploma in Carpentry & Joinery — Level 1 & 2</li>
-        <li>GCSEs incl. English, Maths, Science, Design & Technology</li>
-      </ul>
-    </div>
-
-  </div>
-  <a href="Kieran_McGee_CV_Clean.docx" class="cv-download reveal">
-    ↓ Download Full CV
-  </a>
-</section>
-
-<!-- GALLERY -->
-<section id="gallery">
-  <div class="section-label">Adventures</div>
-  <h2 class="section-title reveal">Travel<br/>Gallery</h2>
-  <p class="gallery-intro reveal">From the UK to Australia and everywhere in between — here's a glimpse of life on the road.</p>
-  <div class="gallery-filter reveal">
-    <button class="filter-btn active" onclick="filterGallery('all', this)">All</button>
-    <button class="filter-btn" onclick="filterGallery('australia', this)">Australia</button>
-    <button class="filter-btn" onclick="filterGallery('uk', this)">UK</button>
-    <button class="filter-btn" onclick="filterGallery('nature', this)">Nature</button>
-    <button class="filter-btn" onclick="filterGallery('city', this)">Cities</button>
-  </div>
-  <div class="gallery-grid" id="galleryGrid">
-    <div class="gallery-item" data-cat="australia">
-      <div class="gallery-placeholder" style="background: linear-gradient(135deg, #1a3a2a, #2d5a3d, #1a3a2a);">
-        <div class="gallery-overlay"></div>
-        <div class="gallery-label">🌿 Add your photo</div>
-      </div>
-    </div>
-    <div class="gallery-item" data-cat="australia city">
-      <div class="gallery-placeholder" style="background: linear-gradient(135deg, #1a2a3a, #1e3a5f, #0f1e30);">
-        <div class="gallery-overlay"></div>
-        <div class="gallery-label">🏙️ Add your photo</div>
-      </div>
-    </div>
-    <div class="gallery-item" data-cat="uk">
-      <div class="gallery-placeholder" style="background: linear-gradient(135deg, #2a1a1a, #4a2020, #2a1a1a);">
-        <div class="gallery-overlay"></div>
-        <div class="gallery-label">🏰 Add your photo</div>
-      </div>
-    </div>
-    <div class="gallery-item" data-cat="nature australia">
-      <div class="gallery-placeholder" style="background: linear-gradient(135deg, #2a3a1a, #4a6030, #2a3a1a);">
-        <div class="gallery-overlay"></div>
-        <div class="gallery-label">🌄 Add your photo</div>
-      </div>
-    </div>
-    <div class="gallery-item" data-cat="city">
-      <div class="gallery-placeholder" style="background: linear-gradient(135deg, #1a1a2a, #2a2a4a, #1a1a2a);">
-        <div class="gallery-overlay"></div>
-        <div class="gallery-label">🌆 Add your photo</div>
-      </div>
-    </div>
-    <div class="gallery-item" data-cat="nature">
-      <div class="gallery-placeholder" style="background: linear-gradient(135deg, #1a2a2a, #204040, #1a2a2a);">
-        <div class="gallery-overlay"></div>
-        <div class="gallery-label">🌊 Add your photo</div>
-      </div>
-    </div>
-    <div class="gallery-item" data-cat="uk city">
-      <div class="gallery-placeholder" style="background: linear-gradient(135deg, #2a2a1a, #403820, #2a2a1a);">
-        <div class="gallery-overlay"></div>
-        <div class="gallery-label">🎡 Add your photo</div>
-      </div>
-    </div>
-    <div class="gallery-item" data-cat="australia nature">
-      <div class="gallery-placeholder" style="background: linear-gradient(135deg, #3a1a0a, #6a3010, #3a1a0a);">
-        <div class="gallery-overlay"></div>
-        <div class="gallery-label">🦘 Add your photo</div>
-      </div>
+    <div class="slide-overlay"></div>
+    <div class="slide-content">
+      <div class="slide-tag"><span class="dot"></span> Always Moving</div>
+      <div class="slide-title">Never<br>Stop.</div>
+      <p class="slide-sub">Life is too short to stay still</p>
     </div>
   </div>
-  <div class="gallery-upload-note reveal">
-    <strong>📷 Ready for your photos & videos!</strong>
-    Replace the placeholder cards above with your own travel images. Just swap in your image files and update the src attributes — each card is ready to go.
-  </div>
-</section>
 
-<!-- BLOG -->
-<section id="blog">
-  <div class="section-label">Stories</div>
-  <h2 class="section-title reveal">Travel<br/>Blog</h2>
-  <div class="blog-grid">
-    <div class="blog-card reveal">
-      <div class="blog-card-img" style="background: linear-gradient(135deg, #1a3a2a, #2d5a3d);">🇦🇺</div>
-      <div class="blog-card-body">
-        <span class="blog-tag">Australia</span>
-        <div class="blog-title">Landing Down Under — My First Weeks in Australia</div>
-        <div class="blog-excerpt">From the moment I stepped off the plane, everything felt bigger, brighter, and full of possibility. Here's what hit me first...</div>
-        <div class="blog-meta">
-          <span>Your story here</span>
-          <span class="blog-read">Read →</span>
-        </div>
-      </div>
+  <!-- TRAVEL PHOTO 1 -->
+  <div class="slide" data-i="4">
+    <div class="slide-placeholder" id="sph4" onclick="document.getElementById('ft0').click()" style="background:linear-gradient(135deg,#e8ddd0,#d4c8b8);">
+      <div class="ph-num">05</div>
+      <div class="ph-icon">📸</div>
+      <div class="ph-text">tap to add travel photo</div>
     </div>
-    <div class="blog-card reveal">
-      <div class="blog-card-img" style="background: linear-gradient(135deg, #1a2a3a, #1e3a5f);">🌊</div>
-      <div class="blog-card-body">
-        <span class="blog-tag">Nature</span>
-        <div class="blog-title">The Coast, The Outback & Everything In Between</div>
-        <div class="blog-excerpt">Australia has a way of making you feel completely free. Whether it's the coastline or the red earth stretching forever...</div>
-        <div class="blog-meta">
-          <span>Your story here</span>
-          <span class="blog-read">Read →</span>
-        </div>
-      </div>
-    </div>
-    <div class="blog-card reveal">
-      <div class="blog-card-img" style="background: linear-gradient(135deg, #2a1a1a, #4a2020);">🇬🇧</div>
-      <div class="blog-card-body">
-        <span class="blog-tag">UK</span>
-        <div class="blog-title">Where It All Started — Growing Up in Nottingham</div>
-        <div class="blog-excerpt">Before the adventures, there was home. Nottingham shaped who I am — and I wouldn't change a single bit of it...</div>
-        <div class="blog-meta">
-          <span>Your story here</span>
-          <span class="blog-read">Read →</span>
-        </div>
-      </div>
+    <div class="slide-overlay"></div>
+    <div class="slide-content">
+      <div class="slide-tag"><span class="dot"></span> On The Road</div>
+      <div class="slide-title">Somewhere<br>Beautiful.</div>
+      <p class="slide-sub">Every road trip has its own magic</p>
     </div>
   </div>
-</section>
 
-<!-- CONTACT -->
-<section id="contact">
-  <div class="section-label">Let's Connect</div>
-  <div class="contact-grid">
-    <div>
-      <h2 class="section-title reveal">Get In<br/>Touch</h2>
-      <div class="contact-text reveal">
-        <p>Whether you have a remote role you think I'd be great for, want to collaborate, or just want to chat about travel — I'd love to hear from you.</p>
-        <p>I'm immediately available and open to fully remote opportunities worldwide.</p>
-      </div>
-      <div class="contact-links reveal">
-        <a href="mailto:kieranmcgee94@gmail.com" class="contact-link">
-          <span>✉️</span> kieranmcgee94@gmail.com
-        </a>
-        <a href="tel:+61404909842" class="contact-link">
-          <span>📱</span> +61 404 909 842
-        </a>
-        <a href="#" class="contact-link">
-          <span>📍</span> Australia — Open to Remote Worldwide
-        </a>
-      </div>
+  <!-- TRAVEL PHOTO 2 -->
+  <div class="slide" data-i="5">
+    <div class="slide-placeholder" id="sph5" onclick="document.getElementById('ft1').click()" style="background:linear-gradient(135deg,#e0e8d8,#c8d4b8);">
+      <div class="ph-num">06</div>
+      <div class="ph-icon">🌅</div>
+      <div class="ph-text">tap to add travel photo</div>
     </div>
-    <div class="contact-form reveal">
-      <div class="form-group">
-        <label class="form-label">Your Name</label>
-        <input type="text" class="form-input" placeholder="John Smith"/>
-      </div>
-      <div class="form-group">
-        <label class="form-label">Email Address</label>
-        <input type="email" class="form-input" placeholder="hello@example.com"/>
-      </div>
-      <div class="form-group">
-        <label class="form-label">Message</label>
-        <textarea class="form-textarea" rows="5" placeholder="Tell me about the opportunity or just say hi..."></textarea>
-      </div>
-      <button class="form-submit">Send Message →</button>
+    <div class="slide-overlay"></div>
+    <div class="slide-content">
+      <div class="slide-tag"><span class="dot"></span> Golden Hour</div>
+      <div class="slide-title">Chasing<br>The Sun.</div>
+      <p class="slide-sub">No filter needed when the light is this good</p>
     </div>
   </div>
-</section>
 
-<!-- FOOTER -->
-<footer>
-  <div class="footer-logo">Kieran McGee</div>
-  <div class="footer-copy">© 2026 Kieran McGee. All rights reserved.</div>
-  <div class="footer-links">
-    <a href="#about">About</a>
-    <a href="#gallery">Gallery</a>
-    <a href="#contact">Contact</a>
+  <!-- TRAVEL PHOTO 3 -->
+  <div class="slide" data-i="6">
+    <div class="slide-placeholder" id="sph6" onclick="document.getElementById('ft2').click()" style="background:linear-gradient(135deg,#d0dce8,#b8c8d4);">
+      <div class="ph-num">07</div>
+      <div class="ph-icon">🌊</div>
+      <div class="ph-text">tap to add travel photo</div>
+    </div>
+    <div class="slide-overlay"></div>
+    <div class="slide-content">
+      <div class="slide-tag"><span class="dot"></span> The Coast</div>
+      <div class="slide-title">Salt Air &<br>Good Vibes.</div>
+      <p class="slide-sub">The ocean fixes everything</p>
+    </div>
   </div>
-</footer>
+
+  <!-- TRAVEL PHOTO 4 -->
+  <div class="slide" data-i="7">
+    <div class="slide-placeholder" id="sph7" onclick="document.getElementById('ft3').click()" style="background:linear-gradient(135deg,#dce0e8,#c0c4d0);">
+      <div class="ph-num">08</div>
+      <div class="ph-icon">🏔️</div>
+      <div class="ph-text">tap to add travel photo</div>
+    </div>
+    <div class="slide-overlay"></div>
+    <div class="slide-content">
+      <div class="slide-tag"><span class="dot"></span> Up High</div>
+      <div class="slide-title">Above The<br>Clouds.</div>
+      <p class="slide-sub">The view is always worth the climb</p>
+    </div>
+  </div>
+
+  <!-- TRAVEL PHOTO 5 -->
+  <div class="slide" data-i="8">
+    <div class="slide-placeholder" id="sph8" onclick="document.getElementById('ft4').click()" style="background:linear-gradient(135deg,#e8e0d0,#d4c8b0);">
+      <div class="ph-num">09</div>
+      <div class="ph-icon">🌆</div>
+      <div class="ph-text">tap to add travel photo</div>
+    </div>
+    <div class="slide-overlay"></div>
+    <div class="slide-content">
+      <div class="slide-tag"><span class="dot"></span> City Life</div>
+      <div class="slide-title">City<br>Lights.</div>
+      <p class="slide-sub">Every city has its own heartbeat</p>
+    </div>
+  </div>
+
+  <!-- GALLERY CTA — light slide -->
+  <div class="slide" data-i="9" style="background:#f2f2f0;">
+    <div class="slide-content light" style="align-items:center;justify-content:center;text-align:center;">
+      <div class="slide-tag" style="margin:0 auto 20px;"><span class="dot"></span> And there's more</div>
+      <div class="slide-title" style="font-size:clamp(3rem,9vw,8rem);color:#111;text-shadow:none;margin-bottom:20px;">14,000+<br>Photos.</div>
+      <p class="slide-sub" style="color:rgba(0,0,0,.45);margin:0 auto 44px;text-align:center;">Every trip, every moment, every memory.</p>
+      <button onclick="openGallery()" style="background:#111;color:#fff;border:none;padding:16px 40px;border-radius:40px;font-family:'Space Grotesk',sans-serif;font-weight:700;font-size:.9rem;cursor:pointer;letter-spacing:.5px;transition:all .25s;" onmouseover="this.style.background='#333'" onmouseout="this.style.background='#111'">
+        Open Gallery →
+      </button>
+    </div>
+  </div>
+
+</div><!-- end main -->
+
+<!-- GALLERY PAGE -->
+<div id="gallery-page">
+  <div class="gal-nav">
+    <div class="gal-logo">Kieran McGee</div>
+    <div class="gal-right">
+      <span class="gal-count" id="galCount">0 photos</span>
+      <button class="btn-add" onclick="document.getElementById('fg').click()">＋ Add Photos</button>
+      <button class="btn-back" onclick="closeGallery()">← Back</button>
+    </div>
+  </div>
+  <div class="gal-header">
+    <h1>My Gallery 📸</h1>
+    <p>Every moment captured — tap any photo to open it</p>
+  </div>
+  <div class="ig-grid" id="igGrid"></div>
+  <div style="height:60px;"></div>
+</div>
+
+<!-- LIGHTBOX -->
+<div id="lightbox" onclick="closeLb()">
+  <button class="lb-btn" id="lb-close" onclick="closeLb()">✕</button>
+  <button class="lb-btn" id="lb-prev" onclick="event.stopPropagation();lbNav(-1)">‹</button>
+  <img id="lb-img" src="" alt="">
+  <button class="lb-btn" id="lb-next" onclick="event.stopPropagation();lbNav(1)">›</button>
+</div>
+
+<!-- File inputs -->
+<input type="file" id="fv0" accept="video/*">
+<input type="file" id="fv1" accept="video/*">
+<input type="file" id="fv2" accept="video/*">
+<input type="file" id="fv3" accept="video/*">
+<input type="file" id="ft0" accept="image/*">
+<input type="file" id="ft1" accept="image/*">
+<input type="file" id="ft2" accept="image/*">
+<input type="file" id="ft3" accept="image/*">
+<input type="file" id="ft4" accept="image/*">
+<input type="file" id="fg"  accept="image/*" multiple>
+
+<div class="toast" id="toast"></div>
 
 <script>
-  // Cursor
-  const cursor = document.getElementById('cursor');
-  const ring = document.getElementById('cursorRing');
-  document.addEventListener('mousemove', e => {
-    cursor.style.left = e.clientX + 'px';
-    cursor.style.top = e.clientY + 'px';
-    setTimeout(() => {
-      ring.style.left = e.clientX + 'px';
-      ring.style.top = e.clientY + 'px';
-    }, 80);
+// SLIDES
+const mainEl=document.getElementById('main');
+const slides=document.querySelectorAll('.slide');
+const total=slides.length;
+const DURATION=5000; // ms per slide
+let current=0;
+let autoTimer=null;
+let fillTimer=null;
+let userScrolled=false;
+
+// BUILD DOTS
+const prog=document.getElementById('progress');
+slides.forEach((_,i)=>{
+  const d=document.createElement('div');
+  d.className='prog-dot';
+  d.onclick=()=>goTo(i,true);
+  prog.appendChild(d);
+});
+const dots=document.querySelectorAll('.prog-dot');
+
+function updateDots(i){
+  dots.forEach((d,j)=>{
+    d.classList.toggle('on',j===i);
+    // last slide is light bg — darken dots
+    d.classList.toggle('dark-dot',j===total-1);
+    if(j===total-1&&j===i) d.classList.add('on');
   });
-  document.querySelectorAll('a, button').forEach(el => {
-    el.addEventListener('mouseenter', () => {
-      ring.style.width = '60px'; ring.style.height = '60px'; ring.style.opacity = '0.3';
-    });
-    el.addEventListener('mouseleave', () => {
-      ring.style.width = '36px'; ring.style.height = '36px'; ring.style.opacity = '0.5';
-    });
+}
+
+function goTo(i, manual=false){
+  if(manual) userScrolled=true;
+  current=Math.max(0,Math.min(i,total-1));
+  slides[current].scrollIntoView({behavior:'smooth'});
+  onEnter(current);
+  if(manual) restartAuto();
+}
+
+function onEnter(i){
+  updateDots(i);
+
+  // Update nav style for light CTA slide
+  const isLight = (i===total-1);
+  document.getElementById('navLogo').className = isLight ? 'nav-logo dark' : 'nav-logo';
+  document.querySelectorAll('.nav-btn').forEach(b=>{
+    b.className = isLight ? 'nav-btn dark-btn' : 'nav-btn';
   });
 
-  // Scroll reveal
-  const reveals = document.querySelectorAll('.reveal, .timeline-item');
-  const observer = new IntersectionObserver(entries => {
-    entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('visible'); });
-  }, { threshold: 0.12 });
-  reveals.forEach(el => observer.observe(el));
+  // Animate content in
+  slides.forEach((s,j)=>s.classList.toggle('active',j===i));
 
-  // Gallery filter
-  function filterGallery(cat, btn) {
-    document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
-    btn.classList.add('active');
-    document.querySelectorAll('.gallery-item').forEach(item => {
-      const cats = item.dataset.cat || '';
-      item.style.opacity = (cat === 'all' || cats.includes(cat)) ? '1' : '0.15';
-      item.style.transform = (cat === 'all' || cats.includes(cat)) ? 'scale(1)' : 'scale(0.97)';
-      item.style.transition = 'all 0.4s ease';
-    });
+  // Play/pause videos
+  document.querySelectorAll('.slide-video').forEach((v,j)=>{
+    if(j===i){ v.play().catch(()=>{}); }
+    else v.pause();
+  });
+}
+
+// AUTO SCROLL
+function startFill(){
+  const fill=document.getElementById('auto-fill');
+  fill.style.transition='none';
+  fill.style.width='0%';
+  requestAnimationFrame(()=>{
+    fill.style.transition=`width ${DURATION}ms linear`;
+    fill.style.width='100%';
+  });
+}
+
+function restartAuto(){
+  clearTimeout(autoTimer);
+  startFill();
+  autoTimer=setTimeout(()=>{
+    const next=(current+1)%total;
+    goTo(next);
+    restartAuto();
+  }, DURATION);
+}
+
+// Detect manual scroll
+let lastScroll=0;
+mainEl.addEventListener('scroll',()=>{
+  const st=mainEl.scrollTop;
+  const vh=window.innerHeight;
+  const idx=Math.round(st/vh);
+  if(idx!==current){
+    current=idx;
+    onEnter(current);
+    restartAuto(); // reset timer when user scrolls
   }
+  lastScroll=st;
+},{passive:true});
+
+// Init
+onEnter(0);
+restartAuto();
+
+// VIDEO UPLOAD
+function setupVid(inputId, vidId, phId){
+  document.getElementById(inputId).addEventListener('change',e=>{
+    const f=e.target.files[0]; if(!f) return;
+    const url=URL.createObjectURL(f);
+    const v=document.getElementById(vidId);
+    v.src=url; v.style.display='block'; v.play().catch(()=>{});
+    document.getElementById(phId).style.display='none';
+    showToast('Video added! 🎬');
+    e.target.value='';
+  });
+}
+setupVid('fv0','vid0','sph0');
+setupVid('fv1','vid1','sph1');
+setupVid('fv2','vid2','sph2');
+setupVid('fv3','vid3','sph3');
+
+// TRAVEL PHOTO UPLOAD
+function setupPhoto(inputId, phId){
+  document.getElementById(inputId).addEventListener('change',e=>{
+    const f=e.target.files[0]; if(!f) return;
+    const url=URL.createObjectURL(f);
+    const ph=document.getElementById(phId);
+    const img=document.createElement('img');
+    img.src=url; img.draggable=false;
+    img.style.cssText='width:100%;height:100%;object-fit:cover;display:block;position:absolute;inset:0;z-index:1;';
+    ph.style.display='none';
+    // Insert before overlay
+    ph.parentElement.insertBefore(img, ph.parentElement.querySelector('.slide-overlay'));
+    // Also add overlay on image
+    ph.parentElement.querySelector('.slide-overlay').style.display='block';
+    showToast('Photo added! 📸');
+    e.target.value='';
+  });
+}
+setupPhoto('ft0','sph4');
+setupPhoto('ft1','sph5');
+setupPhoto('ft2','sph6');
+setupPhoto('ft3','sph7');
+setupPhoto('ft4','sph8');
+
+// GALLERY
+let galImages=[];
+let lbIdx=0;
+
+function openGallery(){
+  document.getElementById('gallery-page').classList.add('open');
+  clearTimeout(autoTimer); // pause auto scroll
+}
+function closeGallery(){
+  document.getElementById('gallery-page').classList.remove('open');
+  restartAuto();
+}
+
+// Seed placeholders
+const emojis=['📸','🌅','🏖️','🏔️','🌆','🌴','✨','💛','🎨','🌊','🌈','💫','🎉','⭐','🦋','🎶','🌸','🐾'];
+const grid=document.getElementById('igGrid');
+for(let i=0;i<18;i++){
+  const c=document.createElement('div'); c.className='ig-cell';
+  const ph=document.createElement('div'); ph.className='ig-ph'; ph.textContent=emojis[i%18];
+  c.appendChild(ph); grid.appendChild(c);
+}
+
+document.getElementById('fg').addEventListener('change',e=>{
+  const files=Array.from(e.target.files).filter(f=>f.type.startsWith('image/'));
+  if(!files.length) return;
+  files.forEach(f=>{
+    const url=URL.createObjectURL(f);
+    galImages.push(url);
+    // Replace next placeholder
+    const ph=grid.querySelector('.ig-ph');
+    if(ph){
+      const cell=ph.parentElement;
+      cell.innerHTML='';
+      const img=document.createElement('img'); img.src=url; img.draggable=false;
+      cell.appendChild(img);
+      cell.onclick=()=>openLb(galImages.length-1);
+    } else {
+      const cell=document.createElement('div'); cell.className='ig-cell';
+      const img=document.createElement('img'); img.src=url; img.draggable=false;
+      cell.appendChild(img); cell.onclick=()=>openLb(galImages.indexOf(url));
+      grid.appendChild(cell);
+    }
+  });
+  document.getElementById('galCount').textContent=`${galImages.length} photo${galImages.length!==1?'s':''}`;
+  showToast(`${files.length} photo${files.length>1?'s':''} added! 📸`);
+  e.target.value='';
+});
+
+function openLb(i){
+  lbIdx=i;
+  document.getElementById('lb-img').src=galImages[i];
+  document.getElementById('lightbox').classList.add('open');
+}
+function closeLb(){ document.getElementById('lightbox').classList.remove('open'); }
+function lbNav(d){ lbIdx=(lbIdx+d+galImages.length)%galImages.length; document.getElementById('lb-img').src=galImages[lbIdx]; }
+document.addEventListener('keydown',e=>{ if(e.key==='ArrowLeft')lbNav(-1); if(e.key==='ArrowRight')lbNav(1); if(e.key==='Escape')closeLb(); });
+
+function showToast(msg){
+  const t=document.getElementById('toast');
+  t.textContent=msg; t.classList.add('show');
+  setTimeout(()=>t.classList.remove('show'),2600);
+}
 </script>
 </body>
 </html>
