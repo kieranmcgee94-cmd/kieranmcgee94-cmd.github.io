@@ -1,16 +1,16 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Kieran McGee â€” Traveller. Explorer. Builder.</title>
+<title>Kieran McGee — Traveller. Explorer. Builder.</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Archivo+Black&family=Caveat:wght@500;700&family=Fredoka+One&family=Instrument+Serif:ital@0;1&family=Space+Grotesk:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 <style>
-/* â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•
+/* ════════════════════════════════════════════════════════════
    RESET + TOKENS
-   â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â• */
+   ════════════════════════════════════════════════════════════ */
 *,*::before,*::after { margin:0; padding:0; box-sizing:border-box; }
 html, body { width:100%; height:100%; overflow:hidden; }
 
@@ -40,9 +40,9 @@ body {
 img { -webkit-user-drag:none; user-select:none; }
 button { font-family: inherit; }
 
-/* â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•
+/* ════════════════════════════════════════════════════════════
    PRELOADER
-   â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â• */
+   ════════════════════════════════════════════════════════════ */
 #preloader {
   position:fixed; inset:0; z-index:99999;
   background:#0a0a09;
@@ -90,9 +90,9 @@ button { font-family: inherit; }
   opacity:0; animation:fadeIn .6s 1.2s forwards;
 }
 
-/* â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•
+/* ════════════════════════════════════════════════════════════
    FILM GRAIN OVERLAY
-   â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â• */
+   ════════════════════════════════════════════════════════════ */
 .grain {
   position:fixed; inset:-50%;
   z-index:9000; pointer-events:none;
@@ -109,9 +109,9 @@ button { font-family: inherit; }
   100% { transform:translate(0,0); }
 }
 
-/* â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•
+/* ════════════════════════════════════════════════════════════
    ANIMATED GRADIENT MESH (HERO BG)
-   â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â• */
+   ════════════════════════════════════════════════════════════ */
 .mesh {
   position:absolute; inset:-20%; z-index:1;
   filter: blur(80px) saturate(1.2);
@@ -152,9 +152,9 @@ button { font-family: inherit; }
   100% { transform: translate(-25%,20%) scale(1.3); }
 }
 
-/* â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•
+/* ════════════════════════════════════════════════════════════
    NAV
-   â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â• */
+   ════════════════════════════════════════════════════════════ */
 nav {
   position:fixed; top:0; left:0; right:0; z-index:5000;
   padding:18px 32px;
@@ -219,9 +219,9 @@ nav.scrolled .nav-logo { opacity:1; transform:translateY(0); }
 }
 .nav-btn.dark-btn:hover { background:rgba(0,0,0,.08); border-color:rgba(0,0,0,.18); }
 
-/* â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•
+/* ════════════════════════════════════════════════════════════
    MAIN SCROLLER
-   â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â• */
+   ════════════════════════════════════════════════════════════ */
 #main {
   position:fixed; inset:0;
   overflow-y:scroll;
@@ -231,9 +231,9 @@ nav.scrolled .nav-logo { opacity:1; transform:translateY(0); }
 #main::-webkit-scrollbar { display:none; }
 #main { scrollbar-width:none; }
 
-/* â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•
+/* ════════════════════════════════════════════════════════════
    SLIDES
-   â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â• */
+   ════════════════════════════════════════════════════════════ */
 .slide {
   position:relative; width:100%; height:100vh;
   scroll-snap-align:start;
@@ -245,17 +245,27 @@ nav.scrolled .nav-logo { opacity:1; transform:translateY(0); }
 /* Inactive slides scale + blur slightly for cinematic feel */
 .slide:not(.active) .slide-content { opacity:.4; }
 
-/* Video fills slide */
+/* Video fills slide (landscape) */
 .slide-video {
   position:absolute; inset:0;
   width:100%; height:100%;
-  object-fit:cover; z-index:0;
-  transform: scale(1.04);
-  transition: transform 8s linear;
+  object-fit:cover; z-index:1;
 }
-.slide.active .slide-video { transform: scale(1); }
 
-/* Placeholder â€” light warm tones */
+/* Portrait video: show full frame, with blurred backdrop fill */
+.slide.video-portrait .slide-video {
+  object-fit: contain;
+  z-index: 2;
+}
+.slide-video-bg {
+  position:absolute; inset:0; z-index:0;
+  width:100%; height:100%;
+  object-fit: cover;
+  filter: blur(42px) brightness(.55) saturate(1.3);
+  transform: scale(1.15);
+}
+
+/* Placeholder — light warm tones */
 .slide-placeholder {
   position:absolute; inset:0; z-index:1;
   background:linear-gradient(135deg, #e8e4de 0%, #d4cfc8 50%, #c8c3bb 100%);
@@ -435,9 +445,9 @@ nav.scrolled .nav-logo { opacity:1; transform:translateY(0); }
 
 @media (max-width: 720px) { .side-index { display:none; } }
 
-/* â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•
+/* ════════════════════════════════════════════════════════════
    PROGRESS DOTS
-   â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â• */
+   ════════════════════════════════════════════════════════════ */
 #progress {
   position:fixed; right:22px; top:50%; transform:translateY(-50%);
   z-index:6000; display:flex; flex-direction:column; gap:12px;
@@ -467,9 +477,9 @@ nav.scrolled .nav-logo { opacity:1; transform:translateY(0); }
 .prog-row.dark.on .prog-dot { background:var(--ink); }
 .prog-row.dark .prog-label { color:rgba(0,0,0,.5); }
 
-/* â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•
+/* ════════════════════════════════════════════════════════════
    AUTO PROGRESS BAR
-   â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â• */
+   ════════════════════════════════════════════════════════════ */
 #auto-bar {
   position:fixed; top:0; left:0; right:0; height:2px;
   background:rgba(255,255,255,.10); z-index:6000;
@@ -481,9 +491,9 @@ nav.scrolled .nav-logo { opacity:1; transform:translateY(0); }
   box-shadow:0 0 14px var(--accent);
 }
 
-/* â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•
+/* ════════════════════════════════════════════════════════════
    SCROLL HINT
-   â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â• */
+   ════════════════════════════════════════════════════════════ */
 #scroll-hint {
   position:fixed; bottom:30px; left:50%;
   transform:translateX(-50%);
@@ -512,9 +522,9 @@ nav.scrolled .nav-logo { opacity:1; transform:translateY(0); }
   100% { transform:translateY(0); opacity:0; }
 }
 
-/* â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•
+/* ════════════════════════════════════════════════════════════
    MARQUEE STRIP
-   â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â• */
+   ════════════════════════════════════════════════════════════ */
 .marquee {
   position:absolute; bottom:0; left:0; right:0; z-index:4;
   height:46px; overflow:hidden;
@@ -536,7 +546,7 @@ nav.scrolled .nav-logo { opacity:1; transform:translateY(0); }
   display:flex; align-items:center; gap:42px;
 }
 .marquee-item::after {
-  content:'âœ¦'; color: var(--accent-2);
+  content:'✦'; color: var(--accent-2);
   font-style:normal; font-size:.85rem;
 }
 @keyframes marquee {
@@ -544,9 +554,9 @@ nav.scrolled .nav-logo { opacity:1; transform:translateY(0); }
   to   { transform:translateX(-50%); }
 }
 
-/* â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•
+/* ════════════════════════════════════════════════════════════
    STATS / CTA SLIDE
-   â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â• */
+   ════════════════════════════════════════════════════════════ */
 #sc-cta {
   align-items:center; justify-content:center;
   text-align:center; padding:60px 32px;
@@ -622,9 +632,9 @@ nav.scrolled .nav-logo { opacity:1; transform:translateY(0); }
   100% { transform: translate(30px,-40px) scale(1.15); }
 }
 
-/* â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•
+/* ════════════════════════════════════════════════════════════
    FOOTER SLIDE
-   â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â• */
+   ════════════════════════════════════════════════════════════ */
 #sc-foot {
   background: var(--ink); color: #fff;
   align-items:center; justify-content:center;
@@ -665,9 +675,9 @@ nav.scrolled .nav-logo { opacity:1; transform:translateY(0); }
   color:rgba(255,255,255,.3);
 }
 
-/* â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•
+/* ════════════════════════════════════════════════════════════
    GALLERY PAGE
-   â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â• */
+   ════════════════════════════════════════════════════════════ */
 #gallery-page {
   position:fixed; inset:0; z-index:7000;
   background:#fafaf7; color:var(--ink);
@@ -803,9 +813,9 @@ nav.scrolled .nav-logo { opacity:1; transform:translateY(0); }
 #lb-prev:hover { transform: translateY(-50%) scale(1.05); }
 #lb-next:hover { transform: translateY(-50%) scale(1.05); }
 
-/* â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•
+/* ════════════════════════════════════════════════════════════
    TOAST
-   â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â• */
+   ════════════════════════════════════════════════════════════ */
 .toast {
   position:fixed; bottom:32px; left:50%;
   transform: translateX(-50%) translateY(100px);
@@ -828,9 +838,9 @@ nav.scrolled .nav-logo { opacity:1; transform:translateY(0); }
 
 input[type="file"] { display:none; }
 
-/* â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•
+/* ════════════════════════════════════════════════════════════
    CHUNKY INTRO HERO (slide 01)
-   â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â• */
+   ════════════════════════════════════════════════════════════ */
 .slide.intro-hero {
   background:
     radial-gradient(ellipse at 20% 30%, rgba(255,91,31,.18), transparent 55%),
@@ -973,7 +983,7 @@ input[type="file"] { display:none; }
   opacity:0; animation: fadeIn 1s 1.5s forwards;
 }
 .intro-scroll::after {
-  content:'â†“'; font-family:'Space Grotesk', sans-serif;
+  content:'↓'; font-family:'Space Grotesk', sans-serif;
   font-size: 1.3rem; font-weight: 600;
   animation: scrollBounce 1.6s ease-in-out infinite;
 }
@@ -982,9 +992,9 @@ input[type="file"] { display:none; }
   50%     { transform: translateY(8px); }
 }
 
-/* â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•
+/* ════════════════════════════════════════════════════════════
    COLLAGE + INSTAGRAM CTA SLIDE
-   â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â• */
+   ════════════════════════════════════════════════════════════ */
 .collage-wrap {
   position:absolute; inset:0; z-index:3;
   display:flex; align-items:center; justify-content:center;
@@ -1145,6 +1155,29 @@ input[type="file"] { display:none; }
   opacity: 1; transform: translateY(0);
 }
 
+/* ════════════════════════════════════════════════════════════
+   PHOTO SLIDESHOW (crossfade between images on a slide)
+   ════════════════════════════════════════════════════════════ */
+.ss-stack {
+  position: absolute; inset: 0; z-index: 1;
+  overflow: hidden;
+}
+.ss-img {
+  position: absolute; inset: 0;
+  width: 100%; height: 100%;
+  object-fit: cover;
+  display: block;
+  opacity: 0;
+  transform: scale(1.05);
+  transition:
+    opacity 1.4s var(--ease),
+    transform 6s linear;
+}
+.ss-img.active {
+  opacity: 1;
+  transform: scale(1);
+}
+
 /* Honor reduced motion */
 @media (prefers-reduced-motion: reduce) {
   *,*::before,*::after {
@@ -1189,9 +1222,9 @@ input[type="file"] { display:none; }
 <!-- SCROLL HINT -->
 <div id="scroll-hint"><span>scroll or wait</span><div class="scroll-wheel"></div></div>
 
-<!-- â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•
+<!-- ════════════════════════════════════════════════════════════
      MAIN SCROLLER
-     â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â• -->
+     ════════════════════════════════════════════════════════════ -->
 <div id="main">
 
   <!-- 01 -->
@@ -1208,54 +1241,10 @@ input[type="file"] { display:none; }
       <h2 class="slide-title" data-split>The World<br>Awaits.</h2>
       <p class="slide-sub">Every road leads somewhere worth going. Every detour rewards the patient.</p>
     </div>
-    <div class="side-index">02 / 11 â€” Adventures</div>
+    <div class="side-index">02 / 11 — Adventures</div>
   </div>
 
-  <!-- 03 -->
-  <div class="slide" data-i="2" data-label="Moments">
-    <video class="slide-video" id="vid2" muted loop playsinline style="display:none;"></video>
-    <div class="slide-placeholder" id="sph2" onclick="document.getElementById('fv2').click()">
-      <div class="ph-num">03</div>
-      <div class="ph-plus">+</div>
-      <div class="ph-text">tap to add video</div>
-    </div>
-    <div class="slide-overlay"></div>
-    <div class="slide-content">
-      <div class="slide-tag"><span class="dot"></span> Moments</div>
-      <h2 class="slide-title" data-split>No Plans,<br>Just Go.</h2>
-      <p class="slide-sub">The best stories are unplanned. Pack light. Leave early. Stay curious.</p>
-    </div>
-    <div class="marquee">
-      <div class="marquee-track">
-        <span class="marquee-item">Lisbon</span><span class="marquee-item">ReykjavÃ­k</span>
-        <span class="marquee-item">Kyoto</span><span class="marquee-item">Marrakech</span>
-        <span class="marquee-item">Patagonia</span><span class="marquee-item">Hanoi</span>
-        <span class="marquee-item">Lisbon</span><span class="marquee-item">ReykjavÃ­k</span>
-        <span class="marquee-item">Kyoto</span><span class="marquee-item">Marrakech</span>
-        <span class="marquee-item">Patagonia</span><span class="marquee-item">Hanoi</span>
-      </div>
-    </div>
-    <div class="side-index">03 / 11 â€” Moments</div>
-  </div>
-
-  <!-- 04 -->
-  <div class="slide" data-i="3" data-label="Motion">
-    <video class="slide-video" id="vid3" muted loop playsinline style="display:none;"></video>
-    <div class="slide-placeholder" id="sph3" onclick="document.getElementById('fv3').click()">
-      <div class="ph-num">04</div>
-      <div class="ph-plus">+</div>
-      <div class="ph-text">tap to add video</div>
-    </div>
-    <div class="slide-overlay"></div>
-    <div class="slide-content">
-      <div class="slide-tag"><span class="dot"></span> Always Moving</div>
-      <h2 class="slide-title" data-split>Never<br>Stop.</h2>
-      <p class="slide-sub">Life is too short to stay still. So I don't.</p>
-    </div>
-    <div class="side-index">04 / 11 â€” Motion</div>
-  </div>
-
-  <!-- 05 â€” TRAVEL PHOTO -->
+  <!-- 02 — PHOTO -->
   <div class="slide" data-i="4" data-label="On The Road">
     <div class="slide-placeholder" id="sph4" onclick="document.getElementById('ft0').click()"
          style="background:linear-gradient(135deg,#e8ddd0,#d4c8b8);">
@@ -1269,7 +1258,7 @@ input[type="file"] { display:none; }
       <h2 class="slide-title" data-split>Somewhere<br>Beautiful.</h2>
       <p class="slide-sub">Every road trip has its own magic. Some you find, some find you.</p>
     </div>
-    <div class="side-index">05 / 11 â€” On The Road</div>
+    <div class="side-index">05 / 11 — On The Road</div>
   </div>
 
   <!-- 06 -->
@@ -1286,7 +1275,7 @@ input[type="file"] { display:none; }
       <h2 class="slide-title" data-split>Chasing<br>The Sun.</h2>
       <p class="slide-sub">No filter needed when the light is this good.</p>
     </div>
-    <div class="side-index">06 / 11 â€” Golden Hour</div>
+    <div class="side-index">06 / 11 — Golden Hour</div>
   </div>
 
   <!-- 07 -->
@@ -1311,7 +1300,7 @@ input[type="file"] { display:none; }
         <span class="marquee-item">Sand in everything</span><span class="marquee-item">Worth it</span>
       </div>
     </div>
-    <div class="side-index">07 / 11 â€” The Coast</div>
+    <div class="side-index">07 / 11 — The Coast</div>
   </div>
 
   <!-- 08 -->
@@ -1328,7 +1317,7 @@ input[type="file"] { display:none; }
       <h2 class="slide-title" data-split>Above The<br>Clouds.</h2>
       <p class="slide-sub">The view is always worth the climb. Every single time.</p>
     </div>
-    <div class="side-index">08 / 11 â€” Up High</div>
+    <div class="side-index">08 / 11 — Up High</div>
   </div>
 
   <!-- 09 -->
@@ -1345,10 +1334,10 @@ input[type="file"] { display:none; }
       <h2 class="slide-title" data-split>City<br>Lights.</h2>
       <p class="slide-sub">Every city has its own heartbeat. Listen long enough and you hear it.</p>
     </div>
-    <div class="side-index">09 / 11 â€” City Life</div>
+    <div class="side-index">09 / 11 — City Life</div>
   </div>
 
-  <!-- 09 â€” COLLAGE + INSTAGRAM CTA -->
+  <!-- 09 — COLLAGE + INSTAGRAM CTA -->
   <div class="slide light-bg" data-i="8" data-label="Follow" style="background:#fafaf7;">
     <div class="collage-wrap">
       <div class="collage" id="collage">
@@ -1368,30 +1357,30 @@ input[type="file"] { display:none; }
         <a class="ig-btn" href="https://instagram.com/kieran93mcgee" target="_blank" rel="noopener">
           <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="2" width="20" height="20" rx="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/></svg>
           <span>@kieran93mcgee</span>
-          <span class="ig-arrow">â†’</span>
+          <span class="ig-arrow">→</span>
         </a>
       </div>
     </div>
-    <div class="side-index" style="color:rgba(0,0,0,.35);">09 / 09 â€” Follow</div>
+    <div class="side-index" style="color:rgba(0,0,0,.35);">09 / 09 — Follow</div>
   </div>
 
 </div><!-- end main -->
 
-<!-- â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•
+<!-- ════════════════════════════════════════════════════════════
      GALLERY PAGE
-     â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â• -->
+     ════════════════════════════════════════════════════════════ -->
 <div id="gallery-page">
   <div class="gal-nav">
     <div class="gal-logo"><span class="nav-dot"></span> Kieran McGee</div>
     <div class="gal-right">
       <span class="gal-count" id="galCount">0 photos</span>
-      <button class="btn-add" data-magnet onclick="document.getElementById('fg').click()">ï¼‹ Add Photos</button>
-      <button class="btn-back" data-magnet onclick="closeGallery()">â† Back</button>
+      <button class="btn-add" data-magnet onclick="document.getElementById('fg').click()">＋ Add Photos</button>
+      <button class="btn-back" data-magnet onclick="closeGallery()">← Back</button>
     </div>
   </div>
   <div class="gal-header">
     <h1>My <span>Gallery.</span></h1>
-    <p>Every moment captured â€” tap any photo to open it full size.</p>
+    <p>Every moment captured — tap any photo to open it full size.</p>
   </div>
   <div class="ig-grid" id="igGrid"></div>
   <div style="height:80px;"></div>
@@ -1399,10 +1388,10 @@ input[type="file"] { display:none; }
 
 <!-- LIGHTBOX -->
 <div id="lightbox" onclick="closeLb()">
-  <button class="lb-btn" id="lb-close" data-magnet onclick="closeLb()">âœ•</button>
-  <button class="lb-btn" id="lb-prev" data-magnet onclick="event.stopPropagation();lbNav(-1)">â€¹</button>
+  <button class="lb-btn" id="lb-close" data-magnet onclick="closeLb()">✕</button>
+  <button class="lb-btn" id="lb-prev" data-magnet onclick="event.stopPropagation();lbNav(-1)">‹</button>
   <img id="lb-img" src="" alt="">
-  <button class="lb-btn" id="lb-next" data-magnet onclick="event.stopPropagation();lbNav(1)">â€º</button>
+  <button class="lb-btn" id="lb-next" data-magnet onclick="event.stopPropagation();lbNav(1)">›</button>
 </div>
 
 <!-- File inputs -->
@@ -1420,18 +1409,18 @@ input[type="file"] { display:none; }
 <div class="toast" id="toast"></div>
 
 <script>
-/* â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•
+/* ════════════════════════════════════════════════════════════
    PRELOADER
-   â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â• */
+   ════════════════════════════════════════════════════════════ */
 window.addEventListener('load', () => {
   setTimeout(() => {
     document.getElementById('preloader').classList.add('done');
   }, 1800);
 });
 
-/* â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•
+/* ════════════════════════════════════════════════════════════
    SPLIT TITLES INTO CHARS (for letter-by-letter reveal)
-   â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â• */
+   ════════════════════════════════════════════════════════════ */
 function splitText(el) {
   // Walk through text nodes and <br> elements, wrapping each character
   // in a span.char so it can animate in independently.
@@ -1451,9 +1440,9 @@ function splitText(el) {
 }
 document.querySelectorAll('[data-split]').forEach(splitText);
 
-/* â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•
+/* ════════════════════════════════════════════════════════════
    MAGNETIC BUTTONS
-   â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â• */
+   ════════════════════════════════════════════════════════════ */
 document.querySelectorAll('[data-magnet]').forEach(el => {
   el.addEventListener('mousemove', e => {
     const r = el.getBoundingClientRect();
@@ -1466,9 +1455,9 @@ document.querySelectorAll('[data-magnet]').forEach(el => {
   });
 });
 
-/* â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•
+/* ════════════════════════════════════════════════════════════
    HERO MOUSE PARALLAX
-   â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â• */
+   ════════════════════════════════════════════════════════════ */
 const heroContent = document.querySelector('[data-parallax]');
 window.addEventListener('mousemove', e => {
   if (!heroContent) return;
@@ -1477,9 +1466,9 @@ window.addEventListener('mousemove', e => {
   heroContent.style.transform = `translate(${x}px, ${y}px)`;
 });
 
-/* â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•
+/* ════════════════════════════════════════════════════════════
    SLIDES + AUTO PROGRESS
-   â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â• */
+   ════════════════════════════════════════════════════════════ */
 const mainEl = document.getElementById('main');
 const slides = document.querySelectorAll('.slide');
 const total = slides.length;
@@ -1585,9 +1574,9 @@ mainEl.addEventListener('scroll', () => {
 onEnter(0);
 restartAuto();
 
-/* â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•
+/* ════════════════════════════════════════════════════════════
    COUNTER ANIMATION
-   â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â• */
+   ════════════════════════════════════════════════════════════ */
 let counterDone = false;
 function runCounter() {
   if (counterDone) return;
@@ -1605,9 +1594,9 @@ function runCounter() {
   requestAnimationFrame(tick);
 }
 
-/* â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•
+/* ════════════════════════════════════════════════════════════
    VIDEO UPLOAD
-   â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â• */
+   ════════════════════════════════════════════════════════════ */
 function setupVid(inputId, vidId, phId) {
   document.getElementById(inputId).addEventListener('change', e => {
     const f = e.target.files[0]; if (!f) return;
@@ -1624,9 +1613,9 @@ setupVid('fv1', 'vid1', 'sph1');
 setupVid('fv2', 'vid2', 'sph2');
 setupVid('fv3', 'vid3', 'sph3');
 
-/* â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•
+/* ════════════════════════════════════════════════════════════
    TRAVEL PHOTO UPLOAD
-   â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â• */
+   ════════════════════════════════════════════════════════════ */
 function setupPhoto(inputId, phId) {
   document.getElementById(inputId).addEventListener('change', e => {
     const f = e.target.files[0]; if (!f) return;
@@ -1648,9 +1637,9 @@ setupPhoto('ft2', 'sph6');
 setupPhoto('ft3', 'sph7');
 setupPhoto('ft4', 'sph8');
 
-/* â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•
+/* ════════════════════════════════════════════════════════════
    GALLERY
-   â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â• */
+   ════════════════════════════════════════════════════════════ */
 let galImages = [];
 let lbIdx = 0;
 
@@ -1668,7 +1657,7 @@ window.openGallery = openGallery;
 window.closeGallery = closeGallery;
 
 // Seed placeholders
-const emojis = ['ðŸ“¸','ðŸŒ…','ðŸ–ï¸','ðŸ”ï¸','ðŸŒ†','ðŸŒ´','âœ¨','ðŸ’›','ðŸŽ¨','ðŸŒŠ','ðŸŒˆ','ðŸ’«','ðŸŽ‰','â­','ðŸ¦‹','ðŸŽ¶','ðŸŒ¸','ðŸ¾'];
+const emojis = ['📸','🌅','🏖️','🏔️','🌆','🌴','✨','💛','🎨','🌊','🌈','💫','🎉','⭐','🦋','🎶','🌸','🐾'];
 const grid = document.getElementById('igGrid');
 for (let i = 0; i < 18; i++) {
   const c = document.createElement('div');
@@ -1730,9 +1719,9 @@ document.addEventListener('keydown', e => {
   if (e.key === 'Escape') { closeLb(); if (galleryOpen) closeGallery(); }
 });
 
-/* â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•
+/* ════════════════════════════════════════════════════════════
    TOAST
-   â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â• */
+   ════════════════════════════════════════════════════════════ */
 function showToast(msg) {
   const t = document.getElementById('toast');
   t.lastChild && t.lastChild.nodeType === 3 ? (t.lastChild.data = msg) : t.append(document.createTextNode(msg));
@@ -1740,48 +1729,114 @@ function showToast(msg) {
   setTimeout(() => t.classList.remove('show'), 2600);
 }
 
-/* â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•
+/* ════════════════════════════════════════════════════════════
    AUTO-LOAD HIGHLIGHT FILES
-   Picks live in: media/
-   â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â• */
+   Picks live in: samsung s24 photos and videos/Highlights/Website/
+   ════════════════════════════════════════════════════════════ */
 (function autoLoadHighlights() {
   const BASE = 'media/';
+  // Single hero video — montage of Japan + Cambodia + Vietnam clips
   const VIDEOS = {
-    vid1: 'Japan_20250906_143836.mp4',
-    vid2: 'Cambodia_20260218_162118.mp4',
-    vid3: 'Vietnam_20260326_075948.mp4',
+    vid1: 'montage.mp4',
   };
-  const PHOTOS = {
-    sph4: 'Vietnam_20260326_082204.jpg',
-    sph5: 'Japan_20251025_161727.jpg',
-    sph6: 'Thailand_20251125_192049.jpg',
-    sph7: 'Cambodia_20251227_112439.jpg',
-    sph8: 'Australia_20260506_142524.jpg',
+  // Each slide cycles through a themed slideshow (3.8s per photo, crossfade)
+  const SLIDESHOWS = {
+    sph4: [ // On The Road
+      'Vietnam_20260326_082204.jpg',
+      'Italy_20250307_133815.jpg',
+      'Cambodia_20260101_150440.jpg',
+      'Norway_20241103_150627.jpg',
+    ],
+    sph5: [ // Golden Hour
+      'Japan_20251025_161727.jpg',
+      'Sweden_20241102_173702.jpg',
+      'UK_20241104_194555.jpg',
+      'Vietnam_20260326_082204.jpg',
+    ],
+    sph6: [ // The Coast
+      'Thailand_20251125_192049.jpg',
+      'Thailand_20251117_154650.jpg',
+      'Vietnam_20260318_123614.jpg',
+      'Australia_20260415_205438.jpg',
+    ],
+    sph7: [ // Up High
+      'Switzerland_20250304_173122.jpg',
+      'Norway_20241103_143829.jpg',
+      'Japan_20251109_160905.jpg',
+      'Norway_20241103_151727.jpg',
+    ],
+    sph8: [ // City Life
+      'Japan_20250910_141252.jpg',
+      'Japan_20250921_224701.jpg',
+      'Singapore_20260111_200835.jpg',
+      'Vietnam_20260310_184057.jpg',
+    ],
   };
+  const SLIDESHOW_INTERVAL = 3800; // ms between slideshow images
 
   function load() {
+    // Load video(s) — montage clip
     for (const [id, file] of Object.entries(VIDEOS)) {
       const v = document.getElementById(id);
       if (!v) continue;
-      v.src = encodeURI(BASE + file);
+      const src = encodeURI(BASE + file);
+      v.src = src;
       v.style.display = 'block';
       v.muted = true;
       v.playsInline = true;
       v.play().catch(() => {});
       const ph = document.getElementById(id.replace('vid', 'sph'));
       if (ph) ph.style.display = 'none';
+
+      // Portrait video → add blurred backdrop so it doesn't look zoomed in
+      v.addEventListener('loadedmetadata', () => {
+        const videoAR = v.videoWidth / v.videoHeight;
+        const slideAR = window.innerWidth / window.innerHeight;
+        if (videoAR < slideAR * 0.85) {
+          const slide = v.closest('.slide');
+          slide.classList.add('video-portrait');
+          if (!slide.querySelector('.slide-video-bg')) {
+            const bg = document.createElement('video');
+            bg.className = 'slide-video-bg';
+            bg.src = src;
+            bg.muted = true; bg.loop = true; bg.autoplay = true; bg.playsInline = true;
+            slide.insertBefore(bg, slide.firstChild);
+            bg.play().catch(() => {});
+          }
+        }
+      }, { once: true });
     }
-    for (const [id, file] of Object.entries(PHOTOS)) {
+
+    // Build slideshows
+    for (const [id, files] of Object.entries(SLIDESHOWS)) {
       const ph = document.getElementById(id);
-      if (!ph) continue;
-      const img = document.createElement('img');
-      img.src = encodeURI(BASE + file);
-      img.draggable = false;
-      img.style.cssText = 'width:100%;height:100%;object-fit:cover;display:block;position:absolute;inset:0;z-index:1;transform:scale(1.04);transition:transform 8s linear;';
+      if (!ph || !files.length) continue;
+      const parent = ph.parentElement;
+      const overlay = parent.querySelector('.slide-overlay');
+
+      const stack = document.createElement('div');
+      stack.className = 'ss-stack';
+      files.forEach((file, i) => {
+        const img = document.createElement('img');
+        img.src = encodeURI(BASE + file);
+        img.draggable = false;
+        img.className = 'ss-img' + (i === 0 ? ' active' : '');
+        img.loading = i === 0 ? 'eager' : 'lazy';
+        stack.appendChild(img);
+      });
       ph.style.display = 'none';
-      const overlay = ph.parentElement.querySelector('.slide-overlay');
-      ph.parentElement.insertBefore(img, overlay);
-      requestAnimationFrame(() => { img.style.transform = 'scale(1)'; });
+      parent.insertBefore(stack, overlay);
+
+      // Cycle if multiple
+      if (files.length > 1) {
+        let idx = 0;
+        const imgs = stack.querySelectorAll('.ss-img');
+        setInterval(() => {
+          imgs[idx].classList.remove('active');
+          idx = (idx + 1) % imgs.length;
+          imgs[idx].classList.add('active');
+        }, SLIDESHOW_INTERVAL);
+      }
     }
   }
 
